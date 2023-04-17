@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            height: 50px;
+            background-color: pink;
+            background-image: linear-gradient(pink, rgba(0, 0, 255, 0.3));
+        }
+
+        input[type=text] {
+            width: 20;
+            padding: 5px 5px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid rgb(187, 0, 255);
+            border-radius: 4px;
+        }
+
+        input[type=number] {
+            width: 20;
+            padding: 5px 5px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid rgb(187, 0, 255);
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            width: 40;
+            padding: 10px 10px;
+            background-color: white;
+            color: rgb(187, 0, 255);
+            border: 2px solid;
+
+        }
+
+        .submit-button:hover {
+            background-color: rgb(187, 0, 255);
+            color: white;
+        }
+
+        .cancel-button {
+            width: 40;
+            padding: 10px 10px;
+            background-color: white;
+            color: rgb(187, 0, 255);
+            border: 2px solid;
+
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(187, 0, 255);
+            color: white;
+        }
+
+        .update-button {
+            width: 40;
+            padding: 10px 10px;
+            margin-right: 5px;
+            background-color: white;
+            color: rgb(187, 0, 255);
+            border: 2px solid;
+
+        }
+
+        .update-button:hover {
+            background-color: rgb(187, 0, 255);
+            color: white;
+        }
+
+        select[id=search] {
+            width: 20;
+            padding: 5px 5px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid rgb(187, 0, 255);
+            border-radius: 4px;
+        }
+
+        select[id=state] {
+            width: 20;
+            padding: 5px 5px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid rgb(187, 0, 255);
+            border-radius: 4px;
+        }
+
+        select[id=city] {
+            width: 20;
+            padding: 5px 5px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid rgb(187, 0, 255);
+            border-radius: 4px;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgb(229, 188, 247);
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1> BASIC DETAILS FORM </h1>
+    <p id="demo"></p>
+    <form id="myForm">
+
+        <div>
+            <label for="name" style="font-size:20px;">Name :- </label>
+            <input type="text" id="name" /><br><br>
+        </div>
+        <div>
+            <label for="age" style="font-size:20px;">Age :- </label>
+            <input type="number" id="age" /><br><br>
+        </div>
+        <div>
+            <label for="id" style="font-size:20px;">Id :- </label>
+            <input type="number" id="id" /><br><br>
+        </div>
+        <div>
+            <label>Gender:- </label> <br>
+
+            <input type="radio" name="gender" value="Male" id="gender" /> Male
+            <br>
+            <input type="radio" name="gender" value="Female" /> Female <br /><br>
+        </div>
+        <div id="my">
+            <label>Hobbies :- </label> <br>
+            <input type="checkbox" name="hobby" value="Sports" id="sport"> Sports
+            <input type="checkbox" name="hobby" value="Music" id="music"> Music
+            <input type="checkbox" name="hobby" value="Reading" id="read"> Reading
+            <input type="checkbox" name="hobby" value="Dancing" id="danc"> Dancing
+            <input type="checkbox" name="hobby" value="Blogging" id="blogging"> Blogging <br><br>
+        </div>
+        <div>
+            <label for="state" style="font-size:20px;">State :- </label>
+            <select name="state" id="state"></select><br><br>
+        </div>
+        <div>
+            <label for="state" style="font-size:20px;">City :- </label>
+            <select name="city" id="city"></select><br><br>
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="submit-button" id="submit">
+            <button type=button class='update-button' id='update-button'>Update</button>
+            <button type=button class='cancel-button'>Cancel</button>
+        </div>
+        <div>
+            <label for="search" style="font-size:20px;"> Select :- </label>
+            <select id="search"></select><br>
+        </div>
+
+        <p id="demo2"></p><br>
+        <div id="formdiv"></div>
+        <table id="table" border="2">
+            <thead>
+                <tr>
+                    <th classs='id'>ID</th>
+                    <th class='name'>Name</th>
+                    <th class='age'>Age</th>
+                    <th class='gender'>Gender</th>
+                    <th class='hobbies'>Hobbies</th>
+                    <th class='statename'>State</th>
+                    <th class='cityname'>City</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        </div>
+    </form>
+
+    <script>
+
+        states_arr = [
+            { id: 0, name: "select state" },
+            { id: 1, name: "Gujarat" },
+            { id: 2, name: "Arunachal" },
+            { id: 3, name: "Haryaana" },
+            { id: 4, name: "Himacahl" },
+            { id: 5, name: "Kearala" }
+        ]
+
+        cities_arrr = [
+
+            { id: 1, state_id: 1, name: "Ahmedabad" },
+            { id: 2, state_id: 1, name: "Vadodara" },
+            { id: 3, state_id: 1, name: "Surat" },
+
+            { id: 4, state_id: 2, name: "Chopelling" },
+            { id: 5, state_id: 2, name: "Momong" },
+            { id: 6, state_id: 2, name: "Sunpura" },
+
+            { id: 7, state_id: 3, name: "Kharsang" },
+            { id: 8, state_id: 3, name: "Gurugram" },
+            { id: 9, state_id: 3, name: "RohtaK" },
+
+            { id: 10, state_id: 4, name: "Shimla" },
+            { id: 11, state_id: 4, name: "Dharamsala" },
+            { id: 12, state_id: 4, name: "Indora" },
+
+            { id: 13, state_id: 5, name: "Kochi" },
+            { id: 14, state_id: 5, name: "Kanhangad" },
+            { id: 15, state_id: 5, name: "Mukkam" }
+
+        ]
+
+        $(document).ready(function () {
+
+            //Update button         
+            $(".update-button").hide();
+
+            //Array
+            var adddetails = [
+                { age: '21', city_id: '7', gender: "Female", hobbies: ["Music"], id: '1', name: "Nency", state_id: '3' },
+                { age: '22', city_id: '10', gender: "Female", hobbies: ["Music", "Reading"], id: '2', name: "Neel", state_id: '4' }
+            ]
+
+            //Add row
+            function addTableRows(adddetails) {
+                $("#tableBody").empty();
+                adddetails.forEach(function (adddetail, index, value) {
+                    var statename = states_arr.find(item => item.id === parseInt(adddetail.state_id));
+                    var cityname = cities_arrr.find(item => item.id === parseInt(adddetail.city_id));
+                    var row = `<tr id=stud_${index}>
+                        <td classs='id'>${adddetail.id}</td>
+                        <td class='name'>${adddetail.name}</td>
+                        <td class='age'>${adddetail.age}</td>
+                        <td class='gender'>${adddetail.gender}</td>
+                        <td class='hobbies'>${adddetail.hobbies}</td>
+                        <td class='statename'>${statename.name}</td>
+                        <td class='cityname'>${cityname.name}</td>
+                        <td>
+                            <button type=button class='edit-button' data-id='edit_${adddetail.id}'>Edit</button>
+                        </td>
+                        <td>
+                            <button type=button class='delete-button' data-id='delete_${adddetail.id}'>Delete</button>
+                        </td>
+                    </tr>`;
+                    $("#tableBody").append(row);
+                });
+            }
+            addTableRows(adddetails)
+            //cleare from function
+            function clearForm() {
+                $("#demo").html(" ");
+                $("#demo2").html(" ");
+                $("#name").val("");
+                $("#age").val("");
+                $("#id").val("");
+                $('input[name="gender"]').prop('checked', false).change();
+                $('input[type=checkbox]').prop('checked', false);
+                $("#state")[0].selectedIndex = 0;
+                $("#city").html("");
+            }
+
+            //state option    
+            let option = ""
+            states_arr.forEach(stateoption);
+            function stateoption(item) {
+                option += "<option value='" + item.id + "'>" + item.name + "</option>"
+            }
+            $('#state').html(option);
+
+            //city option 
+            $("#state").change(function () {
+                var selectedValue = $(this).val();
+                const citydata = cities_arrr.filter(function (ele) {
+                    return ele.state_id == selectedValue
+                });
+
+                var option = "";
+                citydata.forEach(cityoption);
+                function cityoption(item) {
+                    option += "<option value='" + item.id + "'>" + item.name + "</option>";
+                }
+                $('#city').html(option);
+
+            })
+
+            //Selected Name information
+            function addName() {
+                var optionname = "";
+                adddetails.forEach(nameoption);
+                function nameoption(item) {
+                    optionname += "<option value='" + item.id + "'>" + item.name + "</option>";
+                }
+                $("#search").html(optionname);
+
+                $("#search").change(function () {
+                    var selectedText = $(this).find("option:selected").text();
+                    var selectedValue = $(this).val();
+                    $("#demo2").html("Your Name is  " + selectedText + " Your Id is " + selectedValue);
+                });
+            }
+            addName();
+
+            //Submite button
+            document.getElementById("submit").addEventListener("click", function (event) {
+                event.preventDefault();
+
+                //Id validation  
+                const fromdata = adddetails.find((items) => {
+                    return items.id === $("#id").val();
+                })
+
+                const name = $("#name").val();
+                const age = $("#age").val();
+                const id = $("#id").val();
+                const gender = $("input[name='gender']:checked").val();
+                const hobbies = $("input[name='hobby']:checked").map(function (i, e) { return e.value }).toArray();
+
+                //condition for validation
+                if (fromdata) {
+                    $('#demo').html("Sorry! Your ID number is invalid");
+                } else if (name === "" || age === "" || id === "") {
+                    $('#demo').html("Please fill in all required fields");
+                } else if (!gender) {
+                    $('#demo').html("Please select your gender");
+                } else if (hobbies.length === 0) {
+                    $('#demo').html("Please select at least one hobby");
+                } else if ($("#state :selected").val() == 0) {
+                    $('#demo').html("Please select a state");
+                }
+                else {
+                    let addinformation =
+                    {
+                        name: $("#name").val(),
+                        age: $("#age").val(),
+                        id: $("#id").val(),
+                        state_id: state.options[state.selectedIndex].value,
+                        city_id: city.options[city.selectedIndex].value,
+                        gender: $("input[name='gender']:checked").val(),
+                        hobbies: $("input[name='hobby']:checked").map(function (i, e) { return e.value }).toArray()
+                    };
+
+                    //Push value in array
+                    adddetails.push(addinformation);
+                    console.log("::Add::",adddetails)
+                    //Selected Name information
+                    addName();
+                    //Cleare from
+                    clearForm();
+                    //Add row
+                    addTableRows(adddetails);
+
+                    
+                }
+            });
+
+            // Edit  button
+            $('body').on("click", '.edit-button', function (event) {
+                event.preventDefault();
+                //Button
+                $(".submit-button").hide();
+                $(".update-button").show();
+
+                // Get the selected ID
+                var selectedID = $(this).data("id");
+                var splitID = selectedID.split("_");
+                var selecteNumber = splitID[1]
+                var selectedAddDetail = adddetails.find(adddetail => adddetail.id === selecteNumber);
+                console.log("Selected add detail: ", selectedAddDetail);
+                //Set the values
+                $("#name").val(selectedAddDetail.name);
+                $("#age").val(selectedAddDetail.age);
+                $("#id").val(selecteNumber);
+                //Gender radio buttons
+                var genderValue = selectedAddDetail.gender;
+                var genderRadioButtons = $("input[name='gender']");
+                genderRadioButtons.each(function () {
+                    if ($(this).val() == genderValue) {
+                        $(this).prop("checked", true);
+                    };
+                });
+
+                //Hobbies checkboxes
+                $('input[name="hobby"]').val(selectedAddDetail.hobbies);
+                //State value 
+                $("#state").val(selectedAddDetail.state_id);
+                $("#state").trigger("change");
+                //City value
+                $("#city").val(selectedAddDetail.city_id);
+                //Select value 
+                $("#search").val(selecteNumber);
+
+                $("#demo").html(" ");
+                $("#demo2").html(" ");
+            });
+
+            // Update button click handler
+            $(".update-button").click(function (event) {
+                event.preventDefault();
+
+                $(".update-button").hide()
+                $(".submit-button").show()
+                // Name , age and id update 
+                var name = $("#name").val();
+                var age = $("#age").val();
+                var id = $("#id").val();
+                var gender = $("input[name='gender']:checked").val();
+                var hobbies = $("input[name='hobby']:checked").map(function (i, e) { return e.value }).toArray();
+                var joinhobbies = hobbies.join(" , ");
+
+                //state update
+                var stateName = "";
+                var stateId = $("select[name='state']").val();
+                $.each(states_arr, function (index, value) {
+                    if (value.id == stateId) {
+                        stateName = value.name;
+                        return false;
+                    };
+                });
+                console.log("statename", stateName);
+
+                // city update
+                var city = "";
+                var cityId = $("select[name='city']").val(); 
+                $.each(cities_arrr, function (index, value) {
+                    if (value.id == cityId) {
+                        city = value.name;
+                        return false;
+                    };
+                });
+
+                //Find index 
+                index = adddetails.findIndex(adddetail => adddetail.id === id);
+                console.log("Adddetails index", index)
+                var row = $(`#stud_${index}`);
+                console.log("row",row)
+                //Update row
+                row.find(".name").text(name);
+                row.find(".age").text(age);
+                row.find(".gender").text(gender);
+                row.find(".hobbies").text(hobbies);
+                row.find(".statename").text(stateName);
+                row.find(".cityname").text(city);
+
+                // Update the corresponding item in the adddetails array
+                var item = adddetails.find(i => i.id == id);
+                if (item) {
+                    item.name = name;
+                    item.age = age;
+                    item.gender = gender;
+                    item.hobbies = hobbies;
+                    item.state_id = stateId;
+                    item.city_id = cityId;
+                }
+                // Clear the form
+                clearForm();
+            });
+
+            //Cancel Button
+            $('body').on("click", '.cancel-button', function (event) {
+                event.preventDefault();
+                //Add button
+                $("#update-button").hide();
+                $(".submit-button").show();
+                //Cleare form
+                clearForm();
+            });
+
+            //Delete Button
+            $('body').on("click", '.delete-button', function (event) {
+                event.preventDefault();
+                //Remove table 
+                $(this).closest('tr').remove();
+                //Get the selected ID
+                var deleteselectedID = $(this).data("id");
+                var deletesplitID = deleteselectedID.split("_");
+                var deleteselecteNumber = deletesplitID[1]
+                console.log("deleteid", deleteselecteNumber);
+                //Remove array
+                const index = adddetails.map(item => item.id).indexOf(deleteselecteNumber);
+                adddetails.splice(index, 1);
+                console.log("::::::ARRAY::::::", adddetails);
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

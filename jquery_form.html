@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Page</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .navbar {
+            background-color: #B7950B;
+
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        form {
+            padding-top: 40px;
+            background-color: #F7DC6F;
+            background-image: linear-gradient(#FCF3CF, #F39C12 (0, 0, 255, 0.3));
+            border-radius: 10px;
+            padding: 90px;
+            margin: 20px;
+            width: 500px;
+        }
+
+        .form-control {
+            height: 30px;
+            width: 300px;
+            font-size: 14px;
+        }
+
+        #form-div,
+        #table-div {
+            display: none;
+
+        }
+
+        #sidebar-col {
+            background-color: #F4D03F;
+            padding: 70px;
+            min-height: 1000px;
+        }
+
+        .btn-primary {
+            width: 40;
+            padding: 10px 10px;
+            background-color: white;
+            border: 2px solid;
+            color: black;
+
+        }
+
+        #demo {
+            color: red
+        }
+
+        #demo2 {
+            color: red
+        }
+
+        .form-group li a {
+            font-size: 0px;
+        }
+
+        .form-check li a {
+            padding: 0px;
+            font-size: 0px;
+        }
+
+        .btn-primary:hover {
+            background-color: #9A7D0A;
+            color: white;
+        }
+
+        .list-unstyled li {
+            padding-top: 40px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .list-unstyled li a {
+
+            font-size: 30px;
+            color: #f7f7f7;
+        }
+
+        tr:nth-child(even) {
+            background-color: #FCF3CF;
+        }
+
+        .table {
+            margin-top: 50px;
+            padding: 70px;
+            border: 1px solid #B7950B;
+            /* border: 1px solid black; */
+            /* background-color: lightblue; */
+            padding-top: 100%;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-left: 80px;
+        }
+
+        .main {
+            border-radius: 10px;
+            width: 50%;
+            margin: 50px auto;
+        }
+
+        .form-control {
+            display: inline-block;
+            width: 47%;
+        }
+
+        .form-control .cf-medium {
+            width: 97%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">My Page</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" id="sidebar-col">
+                <ul class="list-unstyled">
+                    <li><a href="#" id="form-link">Form</a></li>
+                    <li><a href="#" id="table-link">Table</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10">                
+                <div id="form-div">
+                    <form id="my-form">
+                        <div class="form-group">
+                            <label for="name">Name :-</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                aria-describedby="inputGroupPrepend2" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age :-</label>
+                            <input type="number" class="form-control" id="age" name="age"
+                                aria-describedby="inputGroupPrepend2" required class="form-control">
+                            <p id="demo"></p>
+                        </div>
+                        <div>
+                            <label for="city">City :- </label>
+                            <select name="city" id="city" class="city" class="form-select"
+                                aria-describedby="inputGroupPrepend2" required></select>
+                            <p id="demo2"></p>
+                        </div>
+                        <div class="form-check">
+                            <!-- <lable for="flexCheckDefault">Terms and Condition</lable> -->
+                            <input type="checkbox" value="I accepet this" id="flexCheckDefault"
+                                aria-describedby="inputGroupPrepend2" required aria-label="Default select example"
+                                class="form-check-input">I accepet this team and conditions
+                            <!-- <label class="form-check-label" for="flexCheckDefault">Terms and Condition </label> -->
+                        </div>
+                        <br><button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div id="table-div">
+                    <div class="main">
+                        <!-- Actual search box -->
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <label for="search">Search :- </label>
+                            &nbsp;<input type="text" id="myInput" class="form-control" placeholder="Search">&nbsp;&nbsp;
+                            <!-- <input id="myInput" type="text" placeholder="Search.."> -->
+                            <span class="main-btn" style="width:0px;"></span>
+                            <label for="city" class="margincity">City :- </label>
+                            &nbsp; <select name="city" id="searchcity" class="city"></select>&nbsp;&nbsp;
+                            <!-- <span class="main-btn" style="width:0px;"></span> -->
+                        </div>
+                        <div>
+                            <label for="age" class="margincity">Age :- </label>
+                            &nbsp; <input name="age" id="searchage" class="age" class="form-control"></input>
+                        </div>
+                    </div>
+
+                    <table id="my-table" class="table">
+                        <thead>
+                            <!-- <p id="demo3" class="alert alert-primary" role="alert"></p> -->
+                            <tr class="table-tr">
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            // Array city
+            cities_arrr = [
+                { id: 0, name: "select city" },
+                { id: 1, name: "Surat" },
+                { id: 2, name: "Ahmedabad" },
+                { id: 3, name: "Vadodara" },
+                { id: 4, name: "Rajkot" },
+                { id: 5, name: "Jamnagar" }
+            ]
+
+            // Array 
+            var information = [
+                { id: 1, name: "Ram", city: "Surat", age: '34' },
+                { id: 2, name: "Jolly", city: "Ahmedabad", age: '25' },
+                { id: 3, name: "Sidharth", city: "Vadodara", age: '38' },
+                { id: 4, name: "Sita", city: "Rajkot", age: '30' },
+                { id: 5, name: "Nishu", city: "Jamnagar", age: '26' },
+            ]
+            console.log("::information::", information);
+
+            // Add row
+            function addtableRow(information) {
+                $("#myTable").empty();
+                information.forEach(function (value) {
+                    var row = "<tr><td>" + value.id + "</td><td>" + value.name + "</td><td> " + value.city + "</td><td>" + value.age + "</td></tr>"
+                    $("#my-table").append(row);
+                })
+            }
+            addtableRow(information);
+
+            // City option
+            function addOption(cities_arrr) {
+                let option = ""
+                cities_arrr.forEach(cityoption);
+                function cityoption(item) {
+                    option += "<option value='" + item.id + "'>" + item.name + "</option>"
+                }
+                $('.city').html(option);
+            }
+            addOption(cities_arrr);
+
+            // Disable and hide
+            $(':input[type="submit"]').prop('disabled', true);
+            $("#table-div").hide();
+
+            // Show and Hide
+            $("#form-link").click(function () {
+                $("#table-div").hide();
+                $("#form-div").show();
+            })
+
+            // Show and Hide
+            $("#table-link").click(function () {
+                $("#form-div").hide();
+                $("#table-div").show();
+            })
+
+            // Disable button-
+            $("#flexCheckDefault").click(function () {
+
+                var check = $("input[type='checkbox']:checked").val();
+                if (check) {
+                    $(':input[type="submit"]').prop('disabled', false);
+                }
+                else {
+                    $(':input[type="submit"]').prop('disabled', true);
+                }
+            })
+
+            // Number
+            var idcounter = 6
+
+            // Submit 
+            $("#my-form").submit(function (e) {
+                e.preventDefault();
+
+                // Age
+                var age = $("#age").val();
+                if (age < 18) {
+                    $("#demo").html("Age Must more then 18 years old");
+                }
+
+                else if ($("#city :selected").val() == 0) {
+                    $('#demo2').html("Please select a city");
+                }
+                else {
+                    let adddetail =
+                    {
+                        id: idcounter,
+                        name: $("#name").val(),
+                        age: $("#age").val(),
+                        city: city.options[city.selectedIndex].text
+
+                    };
+                    idcounter++
+                    console.log("city", city)
+                    information.push(adddetail);
+
+                    // Add row
+                    addtableRow(information);
+
+                    addOption(cities_arrr);
+                    // Clere form
+                    $("#demo").html("  ");
+                    $("#demo2").html("  ");
+                    $("#name").val("");
+                    $("#age").val("");
+                    $('input[type=checkbox]').prop('checked', false);
+                    $(':input[type="submit"]').prop('disabled', true);
+                    $("#city")[0].selectedIndex = 0;
+                };
+            });
+
+            // Function 
+            function filterInformation() {
+                var ageSearch = $("#searchage").val()
+                var citySearch = $("#searchcity").find("option:selected").text()
+                var nameSearch = $("#myInput").val().toLowerCase();
+                var filterdinformation = information.filter(function (item) {
+                    var getName = item.name.toLowerCase().indexOf(nameSearch) > -1 || nameSearch === "";
+                    var getAge = item.age === ageSearch || ageSearch == "";
+                    var getCity = item.city === citySearch || citySearch === "select city";
+                    return getAge && getCity && getName
+                });
+
+                addtableRow(filterdinformation);
+            };
+
+            // Event
+            $("#myInput, #searchage, #searchcity").on("change keyup", function () {
+                filterInformation();
+            });
+
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
